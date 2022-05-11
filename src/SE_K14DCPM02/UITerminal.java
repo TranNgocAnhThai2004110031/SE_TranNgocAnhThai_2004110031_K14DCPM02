@@ -68,8 +68,7 @@ public class UITerminal {
             e.printStackTrace();
         }
         sc.nextLine();
-        accObj.login(un, ps);     
-        accObj.check_loggedin();   
+        accObj.login(un, ps);      
     }
 
     public void create_account_inputs() {

@@ -94,7 +94,9 @@ public class StoredFiles {
     }
 
     public void update(Account account) {
-        list = memory;
+        for (int index = 0; index < memory.size(); index++) {
+            list = memory;
+        }
         list.add(account);
     }
 
