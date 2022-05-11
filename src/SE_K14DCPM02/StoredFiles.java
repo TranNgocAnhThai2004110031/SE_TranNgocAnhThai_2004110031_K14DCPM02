@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 public class StoredFiles {
     private String stored_file;
 
-    List<Account> memory = new ArrayList<>();
+    private List<Account> memory = new ArrayList<>();
     List<Account> list = new ArrayList<>(memory);
 
     public StoredFiles() {
@@ -48,9 +48,9 @@ public class StoredFiles {
         
         try {
             Gson gson = new Gson();
-        
+            
             Reader reader = Files.newBufferedReader(Paths.get("data.json"));
-        
+            
             memory = Arrays.asList(gson.fromJson(reader, Account[].class));
         
             for (Account account : memory) {
@@ -62,7 +62,7 @@ public class StoredFiles {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+        update();
     }    
 
     public void write() {
@@ -76,6 +76,7 @@ public class StoredFiles {
         }catch (Exception e) {
             e.printStackTrace();
         }
+        update();
     }
 
     public void update() {

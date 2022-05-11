@@ -83,7 +83,7 @@ public class UITerminal {
         sc.nextLine();
         System.out.print("Email: ");
         String email = sc.nextLine();
-        for (Account account : accObj.accounts.memory) {
+        for (Account account : accObj.accounts.list) {
             if (un.equals(account.getUsername())) {
                 System.out.println("Username đã được sử dụng trước đó.");
                 System.out.println("Tạo tài khoản thất bại!!!.");

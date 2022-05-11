@@ -89,7 +89,7 @@ public class Account {
     }
 
     public boolean check_loggedin() {
-        for (Account account : accounts.memory) {
+        for (Account account : accounts.list) {
             if (account.getUsername().equals(username) && password == account.getPassword()) {
                 loggedin = true;
             } else{
