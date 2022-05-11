@@ -15,6 +15,13 @@ public class Account {
         this.email = email;
     }
 
+    public Account(String username, int password, String email, boolean loggedin) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.loggedin = loggedin;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -66,10 +73,12 @@ public class Account {
         this.username = un;
         this.password = ps;
         this.email = email; 
-        
-        Account account = new Account(un, ps, email);
+        this.loggedin = true;
+
+        Account account = new Account(username, password, email, loggedin);
+        accounts.update();
         accounts.list.add(account);
-        // accounts.update(account);
+        
     }
 
     public void account_valid(String un, String email) {
@@ -83,7 +92,9 @@ public class Account {
         for (Account account : accounts.memory) {
             if (account.getUsername().equals(username) && password == account.getPassword()) {
                 loggedin = true;
-            } 
+            } else{
+                loggedin = false;
+            }
         }
         
         return loggedin;

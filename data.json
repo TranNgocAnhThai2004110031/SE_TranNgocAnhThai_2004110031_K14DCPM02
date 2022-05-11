@@ -1,1 +1,14 @@
-[{"username":"thai","password":1234,"email":"thai2@","loggedin":false}]
+[
+  {
+    "username": "thai",
+    "password": 123,
+    "email": "thai@",
+    "loggedin": true
+  },
+  {
+    "username": "thai1",
+    "password": 123,
+    "email": "thai1@",
+    "loggedin": true
+  }
+]

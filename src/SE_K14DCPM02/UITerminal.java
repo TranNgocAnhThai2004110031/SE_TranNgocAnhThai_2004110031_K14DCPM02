@@ -5,8 +5,6 @@ public class UITerminal {
     private String prompt;
     private String command;
 
-    // List<Account> accounts = new ArrayList<>();
-
     private Account accObj = new Account();
 
     public static Scanner sc = new Scanner(System.in);
@@ -43,18 +41,17 @@ public class UITerminal {
         
     }
 
-    public void handle_command() {
+    // public void handle_command() {
         
-        
-    }
+    // }
 
-    public void handle_inputs() {
+    // public void handle_inputs() {
         
-    }
+    // }
     
-    public String getPrompt() {
-        return prompt;
-    }
+    // public String getPrompt() {
+    //     return prompt;
+    // }
 
     public void login_inputs() {
         System.out.print("User Name: ");

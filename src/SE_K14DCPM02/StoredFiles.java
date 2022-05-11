@@ -1,23 +1,12 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-// import java.io.Reader;
-// import java.lang.reflect.Type;
-// import java.nio.file.Files;
-// import java.nio.file.Path;
-// import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class StoredFiles {
     private String stored_file;
@@ -58,23 +47,16 @@ public class StoredFiles {
         
         
         try {
-            // create Gson instance
             Gson gson = new Gson();
         
-            // create a reader
             Reader reader = Files.newBufferedReader(Paths.get("data.json"));
-
-            // update();
         
-            // convert JSON array to list of books
             memory = Arrays.asList(gson.fromJson(reader, Account[].class));
         
-            // print books
             for (Account account : memory) {
                 System.out.println(account);
             }
         
-            // close reader
             reader.close();
         
         } catch (Exception ex) {
@@ -84,20 +66,22 @@ public class StoredFiles {
     }    
 
     public void write() {
-        Gson gson = new Gson();
-        try(FileWriter fileWriter = new FileWriter("data.json")){
-            gson.toJson(list, fileWriter);
-            fileWriter.close();
+        GsonBuilder gsonBuilder = new GsonBuilder(); //dạng file json in ra đẹp hơn
+        Gson gson = gsonBuilder.create();
+        // Gson gson = new Gson(); // dạng của thầy
+        try(Writer writer = Files.newBufferedWriter(Paths.get("data.json"))){
+            gsonBuilder.setPrettyPrinting().create().toJson(list, writer);
+            // gson.toJson(list, writer);
+            writer.close();
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void update(Account account) {
-        for (int index = 0; index < memory.size(); index++) {
-            list = memory;
+    public void update() {
+        for(Account a : memory){
+            list.add(a);
         }
-        list.add(account);
     }
 
     public void get_all() {
