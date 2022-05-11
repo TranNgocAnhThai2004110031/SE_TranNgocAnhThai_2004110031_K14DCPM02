@@ -68,11 +68,15 @@ public class Account {
         this.email = email; 
         
         Account account = new Account(un, ps, email);
-        accounts.memory.add(account);
+        accounts.list.add(account);
+        // accounts.update(account);
     }
 
     public void account_valid(String un, String email) {
-        
+        check_loggedin();
+        loggedin = true;
+        this.username = un;
+        this.email = email;
     }
 
     public boolean check_loggedin() {

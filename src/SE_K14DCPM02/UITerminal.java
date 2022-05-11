@@ -1,6 +1,5 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.zip.InflaterOutputStream;
 
 public class UITerminal {
     private String prompt;
@@ -10,9 +9,10 @@ public class UITerminal {
 
     private Account accObj = new Account();
 
-    Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public void display_options() {
+        accObj.accounts.read();
         int luaChon;
         do {
             System.out.println("\n\t-------------------------------- Menu --------------------------------");
@@ -39,9 +39,7 @@ public class UITerminal {
                     break;
             }
         } while (luaChon != 0);
-        accObj.accounts.write();
-        accObj.accounts.read();
-        
+        accObj.accounts.write();     
         
     }
 
