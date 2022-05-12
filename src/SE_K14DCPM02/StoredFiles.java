@@ -62,7 +62,6 @@ public class StoredFiles {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        update();
     }    
 
     public void write() {
@@ -76,7 +75,6 @@ public class StoredFiles {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        update();
     }
 
     public void update() {
@@ -86,7 +84,10 @@ public class StoredFiles {
     }
 
     public void get_all() {
-        
+        // list.getClass();
+        for (Account account : list) {
+            System.out.println(account.toString());
+        }
     }    
      
     public void search() {
@@ -94,8 +95,8 @@ public class StoredFiles {
         System.out.print("Nhập username hoặc email account bạn cần tìm: ");
         String searched = UITerminal.sc.nextLine();
         System.out.println("Account tìm được: ");
-        for(Account account:memory){
-            if(account1.getUsername().equalsIgnoreCase(searched) || account1.getEmail().equals(searched)){
+        for(Account account:list){
+            if(account.getUsername().equalsIgnoreCase(searched) || account.getEmail().equals(searched)){
                 account1 = account;
                 System.out.println(account1);
             }

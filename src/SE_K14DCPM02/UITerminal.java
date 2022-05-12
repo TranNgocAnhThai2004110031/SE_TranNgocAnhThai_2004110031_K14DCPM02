@@ -11,6 +11,7 @@ public class UITerminal {
 
     public void display_options() {
         accObj.accounts.read();
+        accObj.accounts.update();
         int luaChon;
         do {
             System.out.println("\n\t-------------------------------- Menu --------------------------------");

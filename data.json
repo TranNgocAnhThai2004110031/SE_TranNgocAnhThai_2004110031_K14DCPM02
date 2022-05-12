@@ -3,12 +3,12 @@
     "username": "thai",
     "password": 123,
     "email": "thai@",
-    "loggedin": true
+    "loggedin": false
   },
   {
     "username": "thai1",
     "password": 123,
     "email": "thai1@",
-    "loggedin": true
+    "loggedin": false
   }
 ]

@@ -52,9 +52,7 @@ public class Account {
     }
 
     public void login(String un, int ps) {
-        username = un;
-        password = ps;
-        check_loggedin();
+        check_loggedin(un, ps);
         if (loggedin == true) {
             System.out.println("Đăng nhập thành công.");
         } else {
@@ -73,30 +71,32 @@ public class Account {
         this.username = un;
         this.password = ps;
         this.email = email; 
-        this.loggedin = true;
 
-        Account account = new Account(username, password, email, loggedin);
-        accounts.update();
+        Account account = new Account(un, ps, email);
         accounts.list.add(account);
-        
     }
 
     public void account_valid(String un, String email) {
-        check_loggedin();
-        loggedin = true;
+        // loggedin = true;
         this.username = un;
         this.email = email;
     }
 
-    public boolean check_loggedin() {
+    public boolean check_loggedin(String un, int ps) {
         for (Account account : accounts.list) {
-            if (account.getUsername().equals(username) && password == account.getPassword()) {
+            if (account.getUsername().equals(un) && account.getPassword() == ps) {
                 loggedin = true;
-            } else{
-                loggedin = false;
-            }
+            } 
         }
         
         return loggedin;
     }
+
+    @Override
+    public String toString() {
+        return "Account [email=" + email + ", loggedin=" + loggedin + ", password=" + password + ", username="
+                + username + "]";
+    }
+
+    
 }
