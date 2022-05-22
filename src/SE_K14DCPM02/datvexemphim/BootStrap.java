@@ -5,10 +5,6 @@
 package datvexemphim;
 
 import java.util.List;
-import java.util.Scanner;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 public class BootStrap {
     private String prompt;
@@ -22,18 +18,25 @@ public class BootStrap {
         this.prompt = null;
         this.command = null;
     }
+    
     /**
      * @param accObject
      */
     public BootStrap(Account accObject) {
+        this();
         this.accObject = accObject;
-        this.prompt = null;
-        this.command = null;
+    }
+    public BootStrap(Movies mvObject) {
+        this();
+        this.mvObject = mvObject;
+    }
+    public BootStrap(Account accObject, Movies mvObject) {
+        this(accObject);
+        this.mvObject = mvObject;
     }
     public BootStrap(Actions command) {
-        this.command = null;
-        this.prompt = null;
-    }
+        this();
+    }       
 
     /**
      * @return the prompt
@@ -46,7 +49,12 @@ public class BootStrap {
         System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
 
         // check
-        if (!accObject.checkLoggedIn()) {
+        if (!accObject.checkLoggedIn() && !mvObject.checkMovies()) {
+            this.prompt = "Enter one of the commands in the brackets:\n" +
+                    "[VM] View Movies\n" +
+                    "[CA] Create Account\n" +
+                    "[LI] Login";
+        } else if (!accObject.checkLoggedIn() && mvObject.checkMovies()) {
             this.prompt = "Enter one of the commands in the brackets:\n" +
                     "[CA] Create Account\n" +
                     "[LI] Login";
@@ -61,8 +69,8 @@ public class BootStrap {
     
     public void handleInputs() {
         if (this.command.equals(Actions.CA)) {
-            Account account = UITerminal.createAccountInputs();
-            UITerminal.createAccount(account.getUsername(), account.getPassword(), account.getEmail());
+            Account account = uiTerminal.createAccountInputs();
+            uiTerminal.createAccount(account.getUsername(), account.getPassword(), account.getEmail());
 
         } else if (this.command.equals(Actions.LI)) {
            List<Object> list =  uiTerminal.loginInputs();// Implementations
@@ -71,8 +79,10 @@ public class BootStrap {
         }else if(this.command.equals(Actions.LO)){
             accObject.logout();
         }else if (this.command.equals(Actions.VM)) {
+            mvObject.moviesName();
             List<Object> list =  uiTerminalMovies.moviesInput();
-            Movies.searchMovies(list.get(0).toString());
+            uiTerminalMovies.searchViewMovies(list.get(0).toString());
+            mvObject.viewMovies(list.get(0).toString());
         }
     }
 

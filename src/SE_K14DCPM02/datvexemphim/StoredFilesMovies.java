@@ -32,9 +32,8 @@ public class StoredFilesMovies {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             
             namemovies = jsonObject.get(key).getAsString();
-            if (value.equals(namemovies)) {
+            if (value.equalsIgnoreCase(namemovies)) {
                 index = i;
-                // System.out.println(memory.get(index));
                 break;
             }
         }

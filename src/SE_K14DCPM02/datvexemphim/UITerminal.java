@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UITerminal {
-    private static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
     // private Account accObject;
     // private Movies mvObject;
     private static StoredFiles storedFiles = new StoredFiles("accounts.json");
@@ -103,7 +103,7 @@ public class UITerminal {
     }
 
     // hanh vi cuar object
-    public static void createAccount(String username, Integer password, String email) {
+    public void createAccount(String username, Integer password, String email) {
         // so do tuan tu - sequence
         // check valid username, email =>??? class method : accountValid
         List<Object> listCheck;
@@ -116,6 +116,7 @@ public class UITerminal {
             // them account moi vao CSDL
             storedFiles.update(username, password, email);// memory
             storedFiles.write();
+            storedFiles.read();
             System.out.println(listCheck.get(1));
         }
 
@@ -127,7 +128,7 @@ public class UITerminal {
 
     }
 
-    public static Account createAccountInputs() {
+    public Account createAccountInputs() {
         System.out.print("USERNAME: ");
         String username = scanner.nextLine();
         System.out.print("PASSWORD: ");
@@ -136,14 +137,12 @@ public class UITerminal {
         System.out.print("EMAIL: ");
         String email = scanner.nextLine();
         return new Account(username, password, email);
-
     }
 
     private static List<Object> accountValid(String username, String email) {
         List<Object> list = new ArrayList<>();
         int index = 0;
-        // Boolean valid = true;
-        // check username = mr teo
+        int index2 = 0;
         index = storedFiles.search("un", username);
 
         if (index != -1) {
@@ -153,8 +152,8 @@ public class UITerminal {
             return list;
         }
 
-        index = storedFiles.search("email", email);
-        if (index != -1) {
+        index2 = storedFiles.search("email", email);
+        if (index2 != -1) {
             // valid = false;
             list.add(false);
             list.add("[EMAIL EXISTS] A mail with that email already exists.");

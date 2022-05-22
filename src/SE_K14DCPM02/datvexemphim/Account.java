@@ -9,7 +9,7 @@ import com.google.gson.JsonObject;
 
 public class Account {
 
-    private static StoredFile accounts = new StoredFile("accounts.json");
+    private static StoredFiles accounts = new StoredFiles("accounts.json");
 
     private String username;
     private Integer password;
