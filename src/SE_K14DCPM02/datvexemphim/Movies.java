@@ -1,9 +1,5 @@
 package datvexemphim;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -12,13 +8,12 @@ public class Movies {
     private String timemovies;
     private boolean movies;
     public static StoredFilesMovies movie = new StoredFilesMovies("movies.json");
-    Scanner sc = new Scanner(System.in);
     
     public Movies() {
         this.namemovies = null;
         this.timemovies = null;
         this.movies = false;
-        Movies.movie.read();
+        movie.read();
     }
 
     public Movies(String namemovies, String timemovies) {
@@ -86,6 +81,7 @@ public class Movies {
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.println(jsonObject.get("mv").getAsString());
+            System.out.println(jsonObject.get("tmv").getAsString());
         }
     }
 
@@ -99,6 +95,8 @@ public class Movies {
             String time = jsonObject.get("tmv").getAsString();
             setMovies(namemovies, time);
             System.out.println("Movies has been selected successfully");
+        }else {
+            System.out.println("Choose movies failed");
         }
     }
 }

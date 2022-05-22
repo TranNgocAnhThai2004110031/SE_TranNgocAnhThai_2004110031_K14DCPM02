@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UITerminal {
+public class UITerminalAccounts {
     public static Scanner scanner = new Scanner(System.in);
     // private Account accObject;
     // private Movies mvObject;
-    private static StoredFiles storedFiles = new StoredFiles("accounts.json");
+    private static StoredFilesAccounts storedFiles = new StoredFilesAccounts("accounts.json");
     // private String prompt;
     // private Actions command;
 
@@ -141,8 +141,8 @@ public class UITerminal {
 
     private static List<Object> accountValid(String username, String email) {
         List<Object> list = new ArrayList<>();
-        int index = 0;
-        int index2 = 0;
+        int index = -1;
+        int index2 = -1;
         index = storedFiles.search("un", username);
 
         if (index != -1) {
@@ -166,16 +166,6 @@ public class UITerminal {
             list.add("[ACCOUNT_CREATED] An account has been created.");
         }
         return list;
-    }
-
-
-    // private List<Object> moviesInput() {
-    //     List<Object> list = new ArrayList<>();
-    //     System.out.println("NAME MOVIES: ");
-    //     String name = scanner.nextLine();
-    //     list.add(name);
-    //     return list;
-    // }
-    
+    } 
 
 }

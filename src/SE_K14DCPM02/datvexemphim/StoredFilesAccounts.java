@@ -7,14 +7,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class StoredFiles {
+public class StoredFilesAccounts {
     private String storedFile;
     private JsonArray memory;// data on RAM
 
     /**
      * @param storedFile
      */
-    public StoredFiles(String storedFile) {
+    public StoredFilesAccounts(String storedFile) {
         this.storedFile = storedFile;
         // tu dong doc du lieu tu file len memory
         this.memory = read();
@@ -31,8 +31,6 @@ public class StoredFiles {
     public int search(String key, String value) {
         // duyet
         int index = -1;
-
-        
         // ...
         String username = null;
         for (int i = 0; i < memory.size(); i++) {

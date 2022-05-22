@@ -4,8 +4,9 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Account accObject = new Account();
         Movies mvObject = new Movies();
+        Seats seatObject = new Seats();
         // UITerminal uiTerminal = new UITerminal(accObject);
-        BootStrap bootStrap = new BootStrap(accObject, mvObject);
+        BootStrap bootStrap = new BootStrap(accObject, mvObject, seatObject);
 
         System.out.println("Welcome to the Cinema Reservation System!!\n (To exit type 'exit') \n");
 
@@ -15,7 +16,7 @@ public class Main {
             System.out.println(bootStrap.getPrompt());
             //chon
             //command
-            String rep = UITerminal.scanner.nextLine();
+            String rep = UITerminalAccounts.scanner.nextLine();
 
             //LI
             String cmd =  bootStrap.handleCommands(rep);

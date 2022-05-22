@@ -27,7 +27,7 @@ public class UITerminalMovies {
         return list;
     }
 
-    public void searchViewMovies(String namemovies) {
+    public void chooseMovies(String namemovies) {
         List<Object> listCheck;
         
         listCheck = moviesValid(namemovies);
@@ -44,7 +44,7 @@ public class UITerminalMovies {
     private List<Object> moviesValid(String namemovies) {
         List<Object> list = new ArrayList<>();
         JsonArray tempMemory = Movies.movie.getAll();
-        int index = 0;
+        int index = -1;
         index = Movies.movie.search("mv", namemovies);
 
         if (index != -1) {
