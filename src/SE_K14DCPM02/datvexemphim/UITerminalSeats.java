@@ -57,8 +57,7 @@ public class UITerminalSeats {
             list.add(rowss);
             list.add(columss);
             return list;
-        }
-        if(index == -1){
+        } else{
             list.add(false);
             list.add("[THE SEAT ARE BOOKED] the seat has been booked !");
         }

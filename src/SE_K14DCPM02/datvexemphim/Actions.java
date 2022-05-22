@@ -6,6 +6,6 @@ package datvexemphim;
 
 public enum Actions {
     CA, LI, LO, VM, VR//view reservation
-    , RM, IP //invoice printing
+    , RM, IP //ticket printing
     
 }

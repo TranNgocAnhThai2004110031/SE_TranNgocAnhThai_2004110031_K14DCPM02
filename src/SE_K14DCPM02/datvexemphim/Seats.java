@@ -14,7 +14,6 @@ public class Seats {
         this.row = null;
         this.column = null;
         this.seat = false;
-        seats.read();
     }
 
     public Seats(String row, Integer column) {

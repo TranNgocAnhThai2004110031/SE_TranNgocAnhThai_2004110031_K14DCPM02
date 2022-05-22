@@ -9,7 +9,7 @@ import com.google.gson.JsonObject;
 
 public class Account {
 
-    private static StoredFilesAccounts accounts = new StoredFilesAccounts("accounts.json");
+    public static StoredFilesAccounts accounts = new StoredFilesAccounts("accounts.json");
 
     private String username;
     private Integer password;
@@ -24,7 +24,6 @@ public class Account {
         this.loggedIn = false;
         this.password = null;
         this.email = null;
-
     }
 
     /**

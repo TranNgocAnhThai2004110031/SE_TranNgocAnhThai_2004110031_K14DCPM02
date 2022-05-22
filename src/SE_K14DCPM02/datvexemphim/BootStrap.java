@@ -6,9 +6,6 @@ package datvexemphim;
 
 import java.util.List;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 public class BootStrap {
     private String prompt;
     private Actions command;
@@ -65,7 +62,7 @@ public class BootStrap {
         if (!accObject.checkLoggedIn() && !mvObject.checkMovies() && !seatObject.checkSeat()) {
             this.prompt = "Enter one of the commands in the brackets:\n" +
                     "[VM] View Movies\n" +
-                    "[VR] View Reservation\n" +
+                    // "[VR] View Reservation\n" +
                     "[RM] Reserve Movies\n" +
                     "[CA] Create Account\n" +
                     "[LI] Login";
@@ -127,9 +124,10 @@ public class BootStrap {
             List<Object> list =  uiTerminalSeat.bookingSeatInputs();
             uiTerminalSeat.bookingSeat(list.get(0).toString(), (Integer)list.get(1));
             seatObject.seatReservation(list.get(0).toString(), (Integer)list.get(1));
-        }else if (this.command.equals(Actions.IP)) {
+        }
+        // else if (this.command.equals(Actions.IP)) {
             
-        } 
+        // } 
     }
 
     public String handleCommands(String rep) {

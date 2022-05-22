@@ -13,7 +13,6 @@ public class Movies {
         this.namemovies = null;
         this.timemovies = null;
         this.movies = false;
-        movie.read();
     }
 
     public Movies(String namemovies, String timemovies) {

@@ -55,7 +55,7 @@ public class StoredFileSeat {
 
     public int searchColumn(String key, Integer value){
         int index = -1;
-        Integer column = null;
+        int column = 0;
         for(int i = 0; i < memorySeat.size(); i++){
             JsonObject jsonObject = memorySeat.get(i).getAsJsonObject();
             column = jsonObject.get(key).getAsInt();

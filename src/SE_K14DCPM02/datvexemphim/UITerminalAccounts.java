@@ -10,26 +10,22 @@ import java.util.Scanner;
 
 public class UITerminalAccounts {
     public static Scanner scanner = new Scanner(System.in);
-    // private Account accObject;
+    private Account accObject;
     // private Movies mvObject;
-    private static StoredFilesAccounts storedFiles = new StoredFilesAccounts("accounts.json");
+    // private static StoredFilesAccounts storedFiles = new StoredFilesAccounts("accounts.json");
     // private String prompt;
     // private Actions command;
 
-    // /**
-    //  * @param accObject
-    //  */
-    // public UITerminal(Account accObject) {
-    //     this.accObject = accObject;
-    //     // this.prompt = null;
-    //     // this.command = null;
-    // }
+    /**
+     * @param accObject
+     */
+    public UITerminalAccounts(Account accObject) {
+        this.accObject = accObject;
+        
+    }
 
-    // public UITerminal(Movies mvObject) {
-    //     this.mvObject = mvObject;
-    //     this.prompt = null;
-    //     this.command = null;
-    // }
+    public UITerminalAccounts() {
+    }
 
     // public void displayOptions() {
     //     System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
@@ -114,9 +110,9 @@ public class UITerminalAccounts {
             System.out.println(listCheck.get(1));
         } else {
             // them account moi vao CSDL
-            storedFiles.update(username, password, email);// memory
-            storedFiles.write();
-            storedFiles.read();
+            Account.accounts.update(username, password, email);// memory
+            Account.accounts.write();
+            Account.accounts.read();
             System.out.println(listCheck.get(1));
         }
 
@@ -143,7 +139,7 @@ public class UITerminalAccounts {
         List<Object> list = new ArrayList<>();
         int index = -1;
         int index2 = -1;
-        index = storedFiles.search("un", username);
+        index = Account.accounts.search("un", username);
 
         if (index != -1) {
             // valid = false;
@@ -152,7 +148,7 @@ public class UITerminalAccounts {
             return list;
         }
 
-        index2 = storedFiles.search("email", email);
+        index2 = Account.accounts.search("email", email);
         if (index2 != -1) {
             // valid = false;
             list.add(false);

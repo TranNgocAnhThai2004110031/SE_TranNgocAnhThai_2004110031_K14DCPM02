@@ -47,8 +47,7 @@ public class StoredFilesAccounts {
 
     public JsonArray read() {
         JsonArray jsonArray = null;
-        
-        
+              
         try (FileReader reader = new FileReader(storedFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
