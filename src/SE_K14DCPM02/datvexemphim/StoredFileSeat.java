@@ -45,7 +45,7 @@ public class StoredFileSeat {
         for(int i = 0; i < memorySeat.size(); i++){
             JsonObject jsonObject = memorySeat.get(i).getAsJsonObject();
             row = jsonObject.get(key).getAsString();
-            if(value.equals(row)){
+            if(value.equalsIgnoreCase(row)){
                 index = i;
                 break;
             }

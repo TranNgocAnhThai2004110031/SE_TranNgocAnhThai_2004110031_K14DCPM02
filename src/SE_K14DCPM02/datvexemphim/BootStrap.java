@@ -84,7 +84,7 @@ public class BootStrap {
         } else if (accObject.checkLoggedIn() && !mvObject.checkMovies() && !seatObject.checkSeat()) {
             this.prompt = "Enter one of the commands in the brackets:\n" +
                     "[VM] View Movies\n" +
-                    "[VR] View Reservation\n" +
+                    // "[VR] View Reservation\n" +
                     "[RM] Reserve Movies\n" +
                     "[LO] Logout";
         } else if (accObject.checkLoggedIn() && mvObject.checkMovies() && !seatObject.checkSeat()) {
@@ -120,6 +120,7 @@ public class BootStrap {
         }else if (this.command.equals(Actions.RM)) {
             mvObject.moviesName();
         }else if (this.command.equals(Actions.VR)) {
+            System.out.println("Empty seat:");
             seatObject.emptySeat();
             List<Object> list =  uiTerminalSeat.bookingSeatInputs();
             uiTerminalSeat.bookingSeat(list.get(0).toString(), (Integer)list.get(1));
